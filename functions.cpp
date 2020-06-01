@@ -28,7 +28,6 @@ void afficherGrille(char grille[3][3])
                 cout << "-----------" << endl;
             }
     }
-
     cout << endl;
 }
 
@@ -83,17 +82,22 @@ bool coordonneesValides(int ligne, int colonne, char grille[3][3])
 // Vérification si la partie est gagnée
 bool partieGagnee(char grille[3][3])
 {
-    if ((grille[0][0] == grille[0][1] && grille[0][0] == grille[0][2] && grille[0][0] != ' ') ||
-        (grille[1][0] == grille[1][1] && grille[1][0] == grille[1][2] && grille[1][0] != ' ') ||
-        (grille[2][0] == grille[2][1] && grille[2][0] == grille[2][2] && grille[2][0] != ' ') ||
-        (grille[0][0] == grille[1][0] && grille[0][0] == grille[2][0] && grille[0][0] != ' ') ||
-        (grille[0][1] == grille[1][1] && grille[0][1] == grille[2][1] && grille[0][1] != ' ') ||
-        (grille[0][2] == grille[1][2] && grille[0][2] == grille[2][2] && grille[0][2] != ' ') ||
-        (grille[0][0] == grille[1][1] && grille[0][0] == grille[2][2] && grille[0][0] != ' ') ||
-        (grille[0][2] == grille[1][1] && grille[0][2] == grille[2][0] && grille[0][2] != ' ') )
+    for (int i(0); i < 3; i++)
+    {
+        if (grille[i][0] == grille[i][1] && grille[i][0] == grille[i][2] && grille[i][0] != ' ' ||
+            grille[0][i] == grille [1][i] && grille[0][i] == grille[2][i] && grille[0][i] != ' ')
+
+        {
+         return true;
+        }
+    }
+
+    if (grille[0][0] == grille[1][1] && grille[0][0] == grille[2][2] && grille[0][0] != ' ' ||
+        grille[0][2] == grille[1][1] && grille[0][2] == grille[2][0] && grille[0][2] != ' ')
     {
         return true;
     }
+
     return false;
 }
 
